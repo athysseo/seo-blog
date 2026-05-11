@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subscribe | Athys SEO Blog</title>
+  <meta name="description" content="Subscribe to Athys SEO Blog and get practical SEO guides delivered to your inbox. Choose weekly digests, new article alerts or both.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">Athys <span>SEO</span> Blog</a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="subscribe.html" class="active">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Subscribe content -->
+  <div class="container--narrow">
+    <div class="subscribe-wrap">
+
+      <div class="subscribe-hero">
+        <div class="hero__eyebrow">Free newsletter</div>
+        <h1>Stay Ahead in Search</h1>
+        <p>Get practical SEO guides, tips and updates delivered directly to your inbox. No spam, no noise — just content worth reading.</p>
+      </div>
+
+      <!-- Subscribe form -->
+      <div class="subscribe-card">
+        <h2 style="font-size:1.25rem;margin-bottom:6px;">Join the newsletter</h2>
+        <p style="color:#64748b;font-size:0.9375rem;margin-bottom:24px;">Fill in your details below and choose what you'd like to receive.</p>
+
+        <label for="sub-name">Your name</label>
+        <input type="text" id="sub-name" name="name" placeholder="e.g. Alex Johnson" autocomplete="name">
+
+        <label for="sub-email">Email address</label>
+        <input type="email" id="sub-email" name="email" placeholder="you@example.com" autocomplete="email">
+
+        <label style="margin-bottom:10px;">What would you like to receive?</label>
+        <div class="checkbox-group">
+          <label>
+            <input type="checkbox" checked>
+            <span>
+              Weekly SEO Digest
+              <span class="option-desc">A curated roundup of the week's best SEO tips and insights, every Friday.</span>
+            </span>
+          </label>
+          <label>
+            <input type="checkbox" checked>
+            <span>
+              New Article Alerts
+              <span class="option-desc">Instant notification whenever a new guide or article is published.</span>
+            </span>
+          </label>
+          <label>
+            <input type="checkbox">
+            <span>
+              SEO Resource Guides
+              <span class="option-desc">In-depth downloadable guides and checklists on specific SEO topics.</span>
+            </span>
+          </label>
+        </div>
+
+        <button class="btn-primary" id="subscribe-btn" onclick="handleSubscribe()">Subscribe now — it's free</button>
+        <p class="privacy-note">No spam, ever. Unsubscribe in one click at any time.</p>
+      </div>
+
+      <!-- What to expect section -->
+      <div class="subscribe-card" style="margin-top:12px;">
+        <h3 style="font-size:1rem;margin-bottom:16px;">What subscribers receive</h3>
+        <ul style="list-style:none;padding:0;">
+          <li style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f1f5f9;font-size:0.9375rem;color:#374151;">
+            <span style="color:#2563eb;font-weight:600;flex-shrink:0;">✓</span>
+            <span>Clear, jargon-free explanations of SEO concepts</span>
+          </li>
+          <li style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f1f5f9;font-size:0.9375rem;color:#374151;">
+            <span style="color:#2563eb;font-weight:600;flex-shrink:0;">✓</span>
+            <span>Actionable checklists you can apply to your own site immediately</span>
+          </li>
+          <li style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #f1f5f9;font-size:0.9375rem;color:#374151;">
+            <span style="color:#2563eb;font-weight:600;flex-shrink:0;">✓</span>
+            <span>Updates when Google makes significant changes to ranking systems</span>
+          </li>
+          <li style="display:flex;gap:12px;padding:10px 0;font-size:0.9375rem;color:#374151;">
+            <span style="color:#2563eb;font-weight:600;flex-shrink:0;">✓</span>
+            <span>Tool recommendations and free resources, curated by topic</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo">Athys <span>SEO</span> Blog</div>
+        <p class="footer-desc">Practical search optimisation guides for marketers, founders and website owners looking to grow organic traffic.</p>
+      </div>
+      <nav class="footer-nav">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="about.html">About</a>
+        <a href="subscribe.html">Subscribe</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Athys SEO Blog. All rights reserved.</span>
+      <span>Built for organic growth.</span>
+    </div>
+  </footer>
+
+  <script>
+    function handleSubscribe() {
+      const email = document.getElementById('sub-email').value.trim();
+      const name  = document.getElementById('sub-name').value.trim();
+      const btn   = document.getElementById('subscribe-btn');
+      if (!email) {
+        document.getElementById('sub-email').focus();
+        return;
+      }
+      btn.textContent = 'You\'re subscribed! ✓';
+      btn.classList.add('btn-success');
+      btn.disabled = true;
+    }
+  </script>
+
+</body>
+</html>
