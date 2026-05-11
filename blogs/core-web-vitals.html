@@ -9,7 +9,6 @@
 </head>
 <body>
 
-  <!-- Header -->
   <header class="site-header">
     <div class="header-inner">
       <a href="../index.html" class="site-logo">Athys <span>SEO</span> Blog</a>
@@ -22,13 +21,11 @@
     </div>
   </header>
 
-  <!-- Article -->
   <div class="container--narrow">
     <div class="post-wrap">
 
       <a href="../blog.html" class="back-link">Back to all articles</a>
 
-      <!-- Article header -->
       <header class="article-header">
         <span class="post-tag">Performance</span>
         <h1>Core Web Vitals: A Complete Guide</h1>
@@ -38,12 +35,10 @@
         </div>
       </header>
 
-      <!-- Featured image — replace the src value with your image URL -->
       <div class="featured-image">
         <img src="../images/core-web-vitals.png" alt="Core Web Vitals Guide featured image">
       </div>
 
-      <!-- Article body -->
       <div class="article-body">
 
         <h2>What Are Core Web Vitals?</h2>
@@ -121,13 +116,74 @@
         <h2>Why It Matters for SEO</h2>
         <p>Pages that pass the Core Web Vitals thresholds are eligible for Google's "Good page experience" designation. While Core Web Vitals are not the dominant ranking factor, they serve as a tiebreaker between pages of similar quality — and poor performance actively damages user experience and conversion rates regardless of rankings.</p>
 
-      </div>
-      <!-- End article body -->
+        <!-- FAQ SECTION -->
+        <hr class="article-divider">
+        <div class="faq-section">
+          <h2>Frequently Asked Questions</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <div class="faq-question">What is the difference between LCP and page load time?</div>
+              <div class="faq-answer">LCP focuses specifically on when the largest visible element (hero image, main heading) renders, which closely aligns with perceived load speed. Traditional "load time" often measures when the entire page and all resources finish downloading, which is less user-centric.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Why did INP replace FID?</div>
+              <div class="faq-answer">FID only measured the delay of the first user interaction. INP captures the responsiveness of all interactions (clicks, taps, keyboard presses) throughout the entire page visit, giving a more complete picture of real-world interactivity.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Do Core Web Vitals guarantee a top ranking?</div>
+              <div class="faq-answer">No — they are one of many signals. However, poor Core Web Vitals can hold you back, and passing them gives you an edge (especially as a tiebreaker) while improving user experience and conversions.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">How often are Core Web Vitals scores updated?</div>
+              <div class="faq-answer">Field data (CrUX) is collected over a rolling 28‑day period, so scores update daily. Lab data (from PageSpeed Insights) is real‑time each time you test. Improvements can take up to 28 days to fully reflect in field data.</div>
+            </div>
+          </div>
+        </div>
 
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "What is the difference between LCP and page load time?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "LCP focuses specifically on when the largest visible element (hero image, main heading) renders, which closely aligns with perceived load speed. Traditional 'load time' often measures when the entire page and all resources finish downloading, which is less user-centric."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Why did INP replace FID?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "FID only measured the delay of the first user interaction. INP captures the responsiveness of all interactions (clicks, taps, keyboard presses) throughout the entire page visit, giving a more complete picture of real-world interactivity."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Do Core Web Vitals guarantee a top ranking?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "No — they are one of many signals. However, poor Core Web Vitals can hold you back, and passing them gives you an edge (especially as a tiebreaker) while improving user experience and conversions."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How often are Core Web Vitals scores updated?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Field data (CrUX) is collected over a rolling 28‑day period, so scores update daily. Lab data (from PageSpeed Insights) is real‑time each time you test. Improvements can take up to 28 days to fully reflect in field data."
+              }
+            }
+          ]
+        }
+        </script>
+      </div>
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div>
