@@ -252,34 +252,51 @@ p  { color: #374151; font-size: 1rem; margin-bottom: 1rem; }
 /* ── Featured Image ── */
 .featured-image {
   width: 100%;
-  aspect-ratio: 16 / 7;
-  border-radius: 10px;
+  aspect-ratio: 16 / 9; /* slightly more standard for blog banners */
+  border-radius: 12px;
   overflow: hidden;
   background: #f1f5f9;
-  border: 2px dashed #cbd5e1;
+  border: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 32px;
+  position: relative;
 }
+
+/* Image styling */
 .featured-image img {
-  width: 100%; height: 100%;
-  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* 👈 FIX: prevents cropping */
+  object-position: center;
+  background: #f8fafc;   /* fills empty space nicely */
   display: block;
 }
+
+/* Placeholder state */
 .featured-image--placeholder {
   flex-direction: column;
   gap: 8px;
   text-align: center;
-}
-.featured-image--placeholder span {
-  font-size: 0.8125rem;
   color: #94a3b8;
+}
+
+.featured-image--placeholder span {
+  font-size: 0.875rem;
   font-weight: 500;
 }
+
 .featured-image--placeholder .img-icon {
-  font-size: 2rem;
+  font-size: 2.2rem;
   color: #cbd5e1;
+}
+
+/* Optional: Better mobile control */
+@media (max-width: 768px) {
+  .featured-image {
+    aspect-ratio: 16 / 10;
+  }
 }
 
 /* ── Blog Post Article ── */
