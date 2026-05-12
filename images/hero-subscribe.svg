@@ -1,0 +1,91 @@
+<svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="420" fill="#f5f3ff"/>
+
+  <!-- Background blobs -->
+  <ellipse cx="200" cy="100" rx="280" ry="280" fill="#ede9fe" opacity="0.55"/>
+  <ellipse cx="1050" cy="350" rx="260" ry="260" fill="#ddd6fe" opacity="0.45"/>
+  <ellipse cx="620" cy="480" rx="420" ry="200" fill="#ede9fe" opacity="0.3"/>
+
+  <!-- Main large envelope (centre) -->
+  <rect x="380" y="100" width="440" height="300" rx="18" fill="white" stroke="#c4b5fd" stroke-width="2"/>
+  <!-- Envelope flap (top triangle) -->
+  <path d="M380 100 L600 240 L820 100 Z" fill="#ede9fe" stroke="#c4b5fd" stroke-width="2"/>
+  <!-- Envelope flap fold lines -->
+  <line x1="380" y1="400" x2="530" y2="265" stroke="#c4b5fd" stroke-width="1.5"/>
+  <line x1="820" y1="400" x2="670" y2="265" stroke="#c4b5fd" stroke-width="1.5"/>
+  <!-- Purple seal / dot on envelope centre -->
+  <circle cx="600" cy="250" r="22" fill="#7c3aed"/>
+  <text x="600" y="256" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="white">✉</text>
+
+  <!-- Small flying envelopes (left) -->
+  <g transform="rotate(-15 220 200)">
+    <rect x="150" y="165" width="120" height="85" rx="8" fill="white" stroke="#c4b5fd" stroke-width="1.5"/>
+    <path d="M150 165 L210 205 L270 165 Z" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="210" cy="215" r="8" fill="#8b5cf6"/>
+  </g>
+
+  <g transform="rotate(10 130 300)">
+    <rect x="68" y="270" width="90" height="64" rx="7" fill="white" stroke="#c4b5fd" stroke-width="1.5"/>
+    <path d="M68 270 L113 298 L158 270 Z" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="113" cy="306" r="6" fill="#a78bfa"/>
+  </g>
+
+  <!-- Small flying envelopes (right) -->
+  <g transform="rotate(12 960 175)">
+    <rect x="900" y="140" width="118" height="82" rx="8" fill="white" stroke="#c4b5fd" stroke-width="1.5"/>
+    <path d="M900 140 L959 178 L1018 140 Z" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="959" cy="188" r="8" fill="#8b5cf6"/>
+  </g>
+
+  <g transform="rotate(-8 1080 300)">
+    <rect x="1030" y="270" width="95" height="66" rx="7" fill="white" stroke="#c4b5fd" stroke-width="1.5"/>
+    <path d="M1030 270 L1077 298 L1125 270 Z" fill="#ede9fe" stroke="#c4b5fd" stroke-width="1.5"/>
+    <circle cx="1077" cy="308" r="6" fill="#a78bfa"/>
+  </g>
+
+  <!-- Notification bell (top left area) -->
+  <g transform="translate(150, 60)">
+    <path d="M30 0 Q30 0 30 0 C14 0 0 14 0 30 L0 55 L-10 65 L70 65 L60 55 L60 30 C60 14 46 0 30 0 Z" fill="white" stroke="#c4b5fd" stroke-width="2"/>
+    <circle cx="30" cy="72" r="9" fill="white" stroke="#c4b5fd" stroke-width="2"/>
+    <!-- Bell notification dot -->
+    <circle cx="52" cy="8" r="10" fill="#7c3aed"/>
+    <text x="52" y="13" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="700" fill="white">3</text>
+  </g>
+
+  <!-- Checkmark badge (top right) -->
+  <g transform="translate(990, 55)">
+    <circle cx="30" cy="30" r="30" fill="white" stroke="#c4b5fd" stroke-width="2"/>
+    <circle cx="30" cy="30" r="22" fill="#7c3aed" opacity="0.1"/>
+    <path d="M16 30 L26 42 L46 18" stroke="#7c3aed" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </g>
+
+  <!-- Subscriber count pill (bottom) -->
+  <rect x="490" y="360" width="220" height="34" rx="17" fill="white" stroke="#c4b5fd" stroke-width="1.5"/>
+  <circle cx="513" cy="377" r="10" fill="#7c3aed"/>
+  <text x="513" y="382" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="700" fill="white">✓</text>
+  <text x="630" y="382" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="600" fill="#7c3aed">No spam · Unsubscribe anytime</text>
+
+  <!-- Wave lines (subtle, bottom) -->
+  <path d="M0 390 Q150 370 300 390 Q450 410 600 390 Q750 370 900 390 Q1050 410 1200 390" fill="none" stroke="#ddd6fe" stroke-width="2"/>
+  <path d="M0 405 Q150 385 300 405 Q450 425 600 405 Q750 385 900 405 Q1050 425 1200 405" fill="none" stroke="#ede9fe" stroke-width="1.5"/>
+
+  <!-- Sparkle stars -->
+  <path d="M340 80 L344 70 L348 80 L358 84 L348 88 L344 98 L340 88 L330 84 Z" fill="#7c3aed" opacity="0.4"/>
+  <path d="M860 75 L863 67 L866 75 L874 78 L866 81 L863 89 L860 81 L852 78 Z" fill="#8b5cf6" opacity="0.45"/>
+  <path d="M80 330 L83 323 L86 330 L93 333 L86 336 L83 343 L80 336 L73 333 Z" fill="#a78bfa" opacity="0.5"/>
+  <path d="M1110 160 L1113 153 L1116 160 L1123 163 L1116 166 L1113 173 L1110 166 L1103 163 Z" fill="#7c3aed" opacity="0.4"/>
+  <path d="M1060 60 L1062 55 L1064 60 L1069 62 L1064 64 L1062 69 L1060 64 L1055 62 Z" fill="#8b5cf6" opacity="0.5"/>
+
+  <!-- Floating dots -->
+  <circle cx="310" cy="310" r="5" fill="#a78bfa" opacity="0.6"/>
+  <circle cx="345" cy="290" r="3" fill="#c4b5fd"/>
+  <circle cx="280" cy="285" r="4" fill="#8b5cf6" opacity="0.5"/>
+  <line x1="310" y1="310" x2="345" y2="290" stroke="#ddd6fe" stroke-width="1.5"/>
+  <line x1="310" y1="310" x2="280" y2="285" stroke="#ddd6fe" stroke-width="1.5"/>
+
+  <circle cx="890" cy="310" r="5" fill="#a78bfa" opacity="0.6"/>
+  <circle cx="920" cy="290" r="3" fill="#c4b5fd"/>
+  <circle cx="860" cy="285" r="4" fill="#8b5cf6" opacity="0.5"/>
+  <line x1="890" y1="310" x2="920" y2="290" stroke="#ddd6fe" stroke-width="1.5"/>
+  <line x1="890" y1="310" x2="860" y2="285" stroke="#ddd6fe" stroke-width="1.5"/>
+</svg>

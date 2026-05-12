@@ -1,0 +1,95 @@
+<svg viewBox="0 0 1200 420" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="420" fill="#f5f3ff"/>
+
+  <!-- Background blobs -->
+  <ellipse cx="80" cy="80" rx="320" ry="320" fill="#ede9fe" opacity="0.55"/>
+  <ellipse cx="1140" cy="360" rx="260" ry="260" fill="#ddd6fe" opacity="0.45"/>
+  <ellipse cx="600" cy="460" rx="400" ry="200" fill="#ede9fe" opacity="0.3"/>
+
+  <!-- Main article card (centre) -->
+  <rect x="440" y="70" width="220" height="290" rx="14" fill="white" stroke="#c4b5fd" stroke-width="1.5"/>
+  <rect x="440" y="70" width="220" height="48" rx="14" fill="#7c3aed"/>
+  <rect x="440" y="102" width="220" height="16" fill="#7c3aed"/>
+  <rect x="462" y="83" width="80" height="10" rx="5" fill="rgba(255,255,255,0.4)"/>
+  <rect x="462" y="140" width="176" height="9" rx="4" fill="#ddd6fe"/>
+  <rect x="462" y="158" width="140" height="7" rx="3" fill="#ede9fe"/>
+  <rect x="462" y="173" width="160" height="7" rx="3" fill="#ede9fe"/>
+  <rect x="462" y="188" width="120" height="7" rx="3" fill="#ede9fe"/>
+  <rect x="462" y="210" width="176" height="7" rx="3" fill="#ede9fe"/>
+  <rect x="462" y="225" width="150" height="7" rx="3" fill="#ede9fe"/>
+  <rect x="462" y="240" width="130" height="7" rx="3" fill="#ede9fe"/>
+  <rect x="462" y="262" width="176" height="7" rx="3" fill="#ede9fe"/>
+  <rect x="462" y="277" width="100" height="7" rx="3" fill="#ede9fe"/>
+  <!-- Read more button -->
+  <rect x="462" y="308" width="90" height="28" rx="14" fill="#7c3aed"/>
+  <rect x="557" y="314" width="60" height="16" rx="8" fill="#ede9fe"/>
+
+  <!-- Left article card (rotated slightly) -->
+  <g transform="rotate(-7 290 210)">
+    <rect x="190" y="100" width="180" height="240" rx="12" fill="white" stroke="#c4b5fd" stroke-width="1.5" opacity="0.9"/>
+    <rect x="190" y="100" width="180" height="40" rx="12" fill="#8b5cf6"/>
+    <rect x="190" y="128" width="180" height="12" fill="#8b5cf6"/>
+    <rect x="210" y="155" width="140" height="7" rx="3" fill="#ddd6fe"/>
+    <rect x="210" y="170" width="110" height="6" rx="3" fill="#ede9fe"/>
+    <rect x="210" y="184" width="130" height="6" rx="3" fill="#ede9fe"/>
+    <rect x="210" y="205" width="140" height="6" rx="3" fill="#ede9fe"/>
+    <rect x="210" y="219" width="100" height="6" rx="3" fill="#ede9fe"/>
+    <rect x="210" y="246" width="80" height="22" rx="11" fill="#ede9fe"/>
+  </g>
+
+  <!-- Right article card (rotated other way) -->
+  <g transform="rotate(6 780 210)">
+    <rect x="690" y="110" width="175" height="230" rx="12" fill="white" stroke="#c4b5fd" stroke-width="1.5" opacity="0.85"/>
+    <rect x="690" y="110" width="175" height="40" rx="12" fill="#a78bfa"/>
+    <rect x="690" y="138" width="175" height="12" fill="#a78bfa"/>
+    <rect x="710" y="162" width="135" height="7" rx="3" fill="#ddd6fe"/>
+    <rect x="710" y="177" width="105" height="6" rx="3" fill="#ede9fe"/>
+    <rect x="710" y="191" width="125" height="6" rx="3" fill="#ede9fe"/>
+    <rect x="710" y="212" width="135" height="6" rx="3" fill="#ede9fe"/>
+    <rect x="710" y="226" width="90" height="6" rx="3" fill="#ede9fe"/>
+    <rect x="710" y="248" width="75" height="22" rx="11" fill="#ede9fe"/>
+  </g>
+
+  <!-- Magnifying glass (right) -->
+  <circle cx="980" cy="170" r="72" fill="white" stroke="#7c3aed" stroke-width="5" opacity="0.92"/>
+  <circle cx="980" cy="170" r="58" fill="#f5f3ff"/>
+  <text x="980" y="163" text-anchor="middle" font-family="Georgia, serif" font-size="26" font-weight="700" fill="#7c3aed">SEO</text>
+  <text x="980" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#a78bfa" letter-spacing="3">SEARCH</text>
+  <line x1="1033" y1="223" x2="1075" y2="268" stroke="#7c3aed" stroke-width="8" stroke-linecap="round"/>
+
+  <!-- Topic pills (bottom left) -->
+  <rect x="80" y="310" width="98" height="26" rx="13" fill="#ede9fe"/>
+  <text x="129" y="328" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#7c3aed">Technical SEO</text>
+
+  <rect x="188" y="310" width="88" height="26" rx="13" fill="#ede9fe"/>
+  <text x="232" y="328" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#7c3aed">On-Page SEO</text>
+
+  <rect x="286" y="310" width="100" height="26" rx="13" fill="#ede9fe"/>
+  <text x="336" y="328" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#7c3aed">Core Web Vitals</text>
+
+  <rect x="80" y="344" width="80" height="26" rx="13" fill="#ede9fe"/>
+  <text x="120" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#7c3aed">Link Building</text>
+
+  <rect x="170" y="344" width="100" height="26" rx="13" fill="#ede9fe"/>
+  <text x="220" y="362" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" font-weight="600" fill="#7c3aed">Keyword Research</text>
+
+  <!-- Connection nodes -->
+  <circle cx="1100" cy="80" r="5" fill="#7c3aed"/>
+  <circle cx="1140" cy="110" r="4" fill="#a78bfa"/>
+  <circle cx="1080" cy="115" r="4" fill="#8b5cf6"/>
+  <circle cx="1120" cy="55" r="3" fill="#c4b5fd"/>
+  <line x1="1100" y1="80" x2="1140" y2="110" stroke="#c4b5fd" stroke-width="1.5"/>
+  <line x1="1100" y1="80" x2="1080" y2="115" stroke="#c4b5fd" stroke-width="1.5"/>
+  <line x1="1100" y1="80" x2="1120" y2="55" stroke="#c4b5fd" stroke-width="1.5"/>
+
+  <circle cx="100" cy="200" r="5" fill="#7c3aed"/>
+  <circle cx="68" cy="230" r="4" fill="#a78bfa"/>
+  <circle cx="130" cy="235" r="3" fill="#8b5cf6"/>
+  <line x1="100" y1="200" x2="68" y2="230" stroke="#c4b5fd" stroke-width="1.5"/>
+  <line x1="100" y1="200" x2="130" y2="235" stroke="#c4b5fd" stroke-width="1.5"/>
+
+  <!-- Sparkle stars -->
+  <path d="M1050 310 L1054 300 L1058 310 L1068 314 L1058 318 L1054 328 L1050 318 L1040 314 Z" fill="#7c3aed" opacity="0.45"/>
+  <path d="M130 100 L133 93 L136 100 L143 103 L136 106 L133 113 L130 106 L123 103 Z" fill="#8b5cf6" opacity="0.5"/>
+  <path d="M1120 240 L1122 235 L1124 240 L1129 242 L1124 244 L1122 249 L1120 244 L1115 242 Z" fill="#a78bfa" opacity="0.6"/>
+</svg>
