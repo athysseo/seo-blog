@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Subscribe | Athys SEO Blog</title>
+  <meta name="description" content="Subscribe to Athys SEO Blog and get practical SEO guides delivered to your inbox.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo"><div class="site-logo__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/></svg></div>Athys <span>SEO</span> Blog</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="site-nav" id="siteNav">
+        <a href="index.html">Home</a><a href="blog.html">Blog</a><a href="about.html">About</a><a href="subscribe.html" class="btn-nav active">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero-banner"><img src="images/hero-subscribe.svg" alt="Subscribe to Athys SEO Blog" style="width:100%;display:block;border-radius:0;"></div>
+  <section class="hero hero--inner" style="padding:32px 24px 28px">
+    <div class="hero__eyebrow">Free newsletter</div>
+    <h1>Stay Ahead in Search</h1>
+    <p>Practical SEO guides and updates delivered to your inbox. No spam — just content worth reading.</p>
+  </section>
+
+  <div class="container--narrow">
+    <div class="subscribe-wrap">
+      <div class="subscribe-card">
+        <h2>Join the newsletter</h2>
+        <p style="color:#6b7280;font-size:0.9375rem;margin-bottom:22px;">Fill in your details and choose what you'd like to receive.</p>
+        <label for="sub-name">Your name</label>
+        <input type="text" id="sub-name" placeholder="e.g. Alex Johnson" autocomplete="name">
+        <label for="sub-email">Email address</label>
+        <input type="email" id="sub-email" placeholder="you@example.com" autocomplete="email">
+        <label style="margin-bottom:10px;">What would you like to receive?</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" checked><span>Weekly SEO Digest<span class="option-desc">A curated roundup of the week's best SEO tips, every Friday.</span></span></label>
+          <label><input type="checkbox" checked><span>New Article Alerts<span class="option-desc">Instant notification whenever a new guide is published.</span></span></label>
+          <label><input type="checkbox"><span>SEO Resource Guides<span class="option-desc">In-depth downloadable checklists on specific SEO topics.</span></span></label>
+        </div>
+        <button class="btn-primary" id="subscribe-btn" onclick="handleSubscribe()">Subscribe now — it's free</button>
+        <p class="privacy-note">No spam, ever. Unsubscribe in one click at any time.</p>
+      </div>
+      <div class="subscribe-card">
+        <h3 style="font-size:1rem;font-family:'Inter',sans-serif;font-weight:600;margin-bottom:14px;">What subscribers receive</h3>
+        <ul style="list-style:none;padding:0;">
+          <li style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #e5e7eb;font-size:0.9375rem;color:#374151;"><span style="color:#7c3aed;font-weight:600;">✓</span><span>Clear, jargon-free explanations of SEO concepts</span></li>
+          <li style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #e5e7eb;font-size:0.9375rem;color:#374151;"><span style="color:#7c3aed;font-weight:600;">✓</span><span>Actionable checklists you can apply to your own site immediately</span></li>
+          <li style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #e5e7eb;font-size:0.9375rem;color:#374151;"><span style="color:#7c3aed;font-weight:600;">✓</span><span>Updates when Google makes significant changes to ranking systems</span></li>
+          <li style="display:flex;gap:12px;padding:10px 0;font-size:0.9375rem;color:#374151;"><span style="color:#7c3aed;font-weight:600;">✓</span><span>Tool recommendations and free resources, curated by topic</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-logo"><div class="footer-logo__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/></svg></div>Athys <span>SEO</span> Blog</div>
+    <p class="footer-copy">© 2026 Athys SEO Blog. All rights reserved.</p>
+  </footer>
+  <div class="sticky-bar"><div class="sticky-bar__inner">
+    <a href="index.html" class="site-logo"><div class="site-logo__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/></svg></div>Athys <span>SEO</span> Blog</a>
+    <nav><a href="index.html">Home</a><a href="blog.html">Blog</a><a href="about.html">About</a><a href="subscribe.html" class="btn-nav">Subscribe</a></nav>
+  </div></div>
+  <button class="float-btn" aria-label="Help">?</button>
+  <script>
+    const toggle = document.getElementById('navToggle'), nav = document.getElementById('siteNav');
+    toggle.addEventListener('click', () => { const o = nav.classList.toggle('open'); toggle.classList.toggle('open', o); toggle.setAttribute('aria-expanded', o); });
+    function handleSubscribe() {
+      const email = document.getElementById('sub-email').value.trim();
+      const btn = document.getElementById('subscribe-btn');
+      if (!email) { document.getElementById('sub-email').focus(); return; }
+      btn.textContent = "You're subscribed! ✓"; btn.classList.add('btn-success'); btn.disabled = true;
+    }
+  </script>
+</body>
+</html>

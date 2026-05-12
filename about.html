@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About | Athys SEO Blog</title>
+  <meta name="description" content="Athys SEO Blog publishes clear, in-depth guides on search optimisation for marketers, founders and website owners.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo"><div class="site-logo__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/></svg></div>Athys <span>SEO</span> Blog</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="site-nav" id="siteNav">
+        <a href="index.html">Home</a><a href="blog.html">Blog</a><a href="about.html" class="active">About</a><a href="subscribe.html" class="btn-nav">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero-banner"><img src="images/hero-about.svg" alt="About Athys SEO Blog" style="width:100%;display:block;border-radius:0;"></div>
+  <section class="hero hero--inner" style="padding:32px 24px 28px">
+    <div class="hero__eyebrow">About this blog</div>
+    <h1>SEO Knowledge, Clearly Explained</h1>
+    <p>No jargon. No fluff. Just practical search optimisation guidance you can act on.</p>
+  </section>
+
+  <div class="container--narrow">
+    <div class="about-wrap">
+      <h2>What Athys SEO Blog Is</h2>
+      <p>Athys SEO Blog is an independent resource dedicated to helping marketers, founders and website owners understand and implement effective search optimisation strategies.</p>
+      <p>Every article is written with a single goal: to take a topic that can feel complex or overwhelming and make it genuinely accessible — without dumbing it down. You'll find clear explanations, structured checklists and specific recommendations you can apply to your own site.</p>
+      <hr class="article-divider">
+      <h2>What We Cover</h2>
+      <p>Our content focuses on four core areas of SEO:</p>
+      <ul style="list-style:disc;padding-left:22px;margin-bottom:16px;color:#374151;">
+        <li style="padding:5px 0"><strong>Technical SEO</strong> — site structure, crawlability, indexing and performance</li>
+        <li style="padding:5px 0"><strong>On-Page SEO</strong> — title tags, content quality, headings and internal linking</li>
+        <li style="padding:5px 0"><strong>Core Web Vitals</strong> — page speed, responsiveness and visual stability</li>
+        <li style="padding:5px 0"><strong>Keyword Research</strong> — finding the right search terms to target</li>
+      </ul>
+      <p>New articles are published regularly. <a href="subscribe.html" style="color:#7c3aed;font-weight:600;">Subscribe</a> to get them delivered to your inbox.</p>
+      <hr class="article-divider">
+      <h2>Who It's For</h2>
+      <p>Whether you're managing your first website or looking to sharpen your existing SEO knowledge, Athys SEO Blog is built for people who want to understand the reasoning behind best practices — not just follow a list of rules. If you want to grow organic traffic sustainably, you're in the right place.</p>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-logo"><div class="footer-logo__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/></svg></div>Athys <span>SEO</span> Blog</div>
+    <p class="footer-copy">© 2026 Athys SEO Blog. All rights reserved.</p>
+  </footer>
+  <div class="sticky-bar"><div class="sticky-bar__inner">
+    <a href="index.html" class="site-logo"><div class="site-logo__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/></svg></div>Athys <span>SEO</span> Blog</a>
+    <nav><a href="index.html">Home</a><a href="blog.html">Blog</a><a href="about.html">About</a><a href="subscribe.html" class="btn-nav">Subscribe</a></nav>
+  </div></div>
+  <button class="float-btn" aria-label="Help" onclick="window.location.href='subscribe.html'">?</button>
+  <script>
+    const toggle = document.getElementById('navToggle'), nav = document.getElementById('siteNav');
+    toggle.addEventListener('click', () => { const o = nav.classList.toggle('open'); toggle.classList.toggle('open', o); toggle.setAttribute('aria-expanded', o); });
+  </script>
+</body>
+</html>

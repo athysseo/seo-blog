@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Core Web Vitals Guide | Athys SEO Blog</title>
+  <meta name="description" content="Understand Google's Core Web Vitals — LCP, INP and CLS — and learn how to improve your scores to boost search rankings.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="../index.html" class="site-logo"><div class="site-logo__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/></svg></div>Athys <span>SEO</span> Blog</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <nav class="site-nav" id="siteNav">
+        <a href="../index.html">Home</a><a href="../blog.html" class="active">Blog</a><a href="../about.html">About</a><a href="../subscribe.html" class="btn-nav">Subscribe</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container--narrow">
+    <div class="post-wrap">
+      <a href="../blog.html" class="back-link">Back to all articles</a>
+      <header class="article-header">
+        <span class="post-tag">Performance</span>
+        <h1>Core Web Vitals: A Complete Guide</h1>
+        <div class="article-meta"><span>Published May 2026</span><span>4 min read</span></div>
+      </header>
+      <!-- FEATURED IMAGE: replace src with your image path e.g. src="../images/core-web-vitals.jpg" then remove featured-image--placeholder class -->
+      <div class="featured-image featured-image--placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 21h18M3.75 3h16.5A.75.75 0 0121 3.75v13.5a.75.75 0 01-.75.75H3.75A.75.75 0 013 17.25V3.75A.75.75 0 013.75 3z"/></svg>
+        <span>Featured image</span><small>Replace src with your image URL</small>
+      </div>
+      <nav class="toc" aria-label="Table of contents">
+        <p class="toc__title">In this article</p>
+        <ol class="toc__list">
+          <li><a href="#what-are">What Are Core Web Vitals?</a></li>
+          <li><a href="#three-metrics">The Three Core Metrics</a></li>
+          <li><a href="#measure">How to Measure Your Scores</a></li>
+          <li><a href="#improve">How to Improve Your Scores</a></li>
+          <li><a href="#why-matters">Why It Matters for SEO</a></li>
+        </ol>
+      </nav>
+      <div class="article-body">
+        <h2 id="what-are">What Are Core Web Vitals?</h2>
+        <p>Core Web Vitals are real-world performance metrics Google uses to measure the quality of a user's experience on a webpage. They directly influence search rankings on both mobile and desktop.</p>
+        <hr class="article-divider">
+        <h2 id="three-metrics">The Three Core Metrics</h2>
+        <h3>LCP — Largest Contentful Paint</h3>
+        <p>How long the largest visible element takes to fully render. The closest proxy for "how fast does this page feel?"</p>
+        <ul><li><strong>Good:</strong> under 2.5 seconds</li><li><strong>Needs improvement:</strong> 2.5s – 4.0s</li><li><strong>Poor:</strong> over 4.0 seconds</li></ul>
+        <h3>INP — Interaction to Next Paint</h3>
+        <p>Replaced FID in March 2024. Measures overall responsiveness to user input throughout the entire visit.</p>
+        <ul><li><strong>Good:</strong> under 200 milliseconds</li><li><strong>Needs improvement:</strong> 200ms – 500ms</li><li><strong>Poor:</strong> over 500 milliseconds</li></ul>
+        <h3>CLS — Cumulative Layout Shift</h3>
+        <p>How much visible content unexpectedly shifts while the page loads.</p>
+        <ul><li><strong>Good:</strong> 0.1 or less</li><li><strong>Needs improvement:</strong> 0.1 – 0.25</li><li><strong>Poor:</strong> above 0.25</li></ul>
+        <hr class="article-divider">
+        <h2 id="measure">How to Measure Your Scores</h2>
+        <ul><li><strong>Google Search Console</strong> — real-user data under "Core Web Vitals" in the Experience section</li><li><strong>PageSpeed Insights</strong> — analyses a single URL with lab and field data plus recommendations</li><li><strong>Chrome DevTools</strong> — measure performance directly in your browser</li></ul>
+        <p>Always prioritise <strong>field data</strong> (real user measurements) over lab data.</p>
+        <hr class="article-divider">
+        <h2 id="improve">How to Improve Your Scores</h2>
+        <h3>Improving LCP</h3>
+        <ul><li>Use a fast host and enable a CDN</li><li>Preload your LCP image using <code>&lt;link rel="preload"&gt;</code></li><li>Remove render-blocking CSS or JS in the &lt;head&gt;</li><li>Compress and serve images in WebP format</li></ul>
+        <h3>Improving INP</h3>
+        <ul><li>Defer or remove non-essential JavaScript</li><li>Break up long JavaScript tasks into smaller chunks</li><li>Minimise third-party scripts</li></ul>
+        <h3>Improving CLS</h3>
+        <ul><li>Set explicit <code>width</code> and <code>height</code> on all images and videos</li><li>Reserve space for ads and embeds before they load</li><li>Avoid injecting content above existing content after page load</li></ul>
+        <hr class="article-divider">
+        <h2 id="why-matters">Why It Matters for SEO</h2>
+        <p>Pages passing Core Web Vitals thresholds earn Google's "Good page experience" designation. While not the dominant ranking factor, they act as a tiebreaker between pages of similar quality — and poor performance damages user experience and conversion rates regardless of rankings.</p>
+      </div>
+
+      <section class="faq-section" aria-labelledby="faq-heading">
+        <div class="faq-section__header">
+          <div class="faq-section__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg></div>
+          <div><h2 class="faq-section__title" id="faq-heading">Frequently Asked Questions</h2><p class="faq-section__subtitle">Common questions about Core Web Vitals, answered clearly.</p></div>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item"><summary>Do Core Web Vitals directly affect Google rankings?<span class="faq-toggle" aria-hidden="true">+</span></summary><div class="faq-answer"><p>Yes, but they are not the dominant ranking signal. Google uses Core Web Vitals as part of its <strong>Page Experience</strong> ranking system — they act as a tiebreaker when two pages have similar content quality and authority.</p><p>Fixing poor scores is more likely to improve conversion rates and reduce bounce rates than to cause dramatic ranking jumps on its own.</p></div></details>
+          <details class="faq-item"><summary>What is a good LCP score and how do I check mine?<span class="faq-toggle" aria-hidden="true">+</span></summary><div class="faq-answer"><p>A <strong>good LCP score is under 2.5 seconds</strong>. Scores between 2.5s and 4.0s need improvement, and anything above 4.0s is considered poor.</p><p>To check yours: visit <strong>PageSpeed Insights</strong> (pagespeed.web.dev), enter your URL, and look at the LCP value. Google Search Console also shows LCP data across all your pages under the Core Web Vitals report.</p></div></details>
+          <details class="faq-item"><summary>What is the difference between INP and the old FID metric?<span class="faq-toggle" aria-hidden="true">+</span></summary><div class="faq-answer"><p><strong>FID</strong> only measured the delay before the browser began processing the very first interaction on a page — and only captured a single interaction.</p><p><strong>INP</strong>, which replaced FID in March 2024, measures the full latency of all interactions throughout a visit and reports the worst-case result. It is a far more comprehensive measure of overall responsiveness.</p></div></details>
+          <details class="faq-item"><summary>Why does my CLS score keep changing between tests?<span class="faq-toggle" aria-hidden="true">+</span></summary><div class="faq-answer"><p>CLS varies between tests because it depends on which resources load on any given visit — fonts, images, ads, embeds — and how quickly they load relative to the rest of the page.</p><p>For a reliable picture, rely on <strong>field data</strong> from Google Search Console, which aggregates real user measurements over a 28-day window, rather than single lab tests.</p></div></details>
+          <details class="faq-item"><summary>Does improving Core Web Vitals help on mobile more than desktop?<span class="faq-toggle" aria-hidden="true">+</span></summary><div class="faq-answer"><p>Core Web Vitals are measured separately for mobile and desktop in Search Console. Mobile scores are typically harder to achieve because mobile devices have less processing power and are often on slower connections.</p><p>Since Google uses <strong>mobile-first indexing</strong>, your mobile scores carry more weight. Prioritise mobile performance improvements first.</p></div></details>
+          <details class="faq-item"><summary>Can third-party scripts cause poor Core Web Vitals scores?<span class="faq-toggle" aria-hidden="true">+</span></summary><div class="faq-answer"><p>Yes — third-party scripts are one of the most common causes of poor Core Web Vitals, particularly for INP and LCP. Chat widgets, advertising scripts, analytics tools and tag managers all add JavaScript that competes for the browser's main thread.</p><p>To minimise their impact: load third-party scripts with <code>async</code> or <code>defer</code>, audit your scripts regularly, and remove any you no longer need.</p></div></details>
+        </div>
+      </section>
+
+      <div class="author-bio">
+        <div class="author-bio__avatar">A</div>
+        <div><p class="author-bio__label">Written by</p><p class="author-bio__name">Athys</p><p class="author-bio__text">SEO specialist covering technical optimisation, on-page strategy and search performance. Writing clear, actionable guides for marketers and website owners.</p></div>
+      </div>
+      <aside class="related-articles">
+        <p class="related-articles__title">You might also like</p>
+        <div class="related-grid">
+          <a href="technical-seo.html" class="related-card"><span class="post-tag">Technical SEO</span><h4>Technical SEO Beginner Guide</h4><p>Crawling, indexing and website structure explained.</p></a>
+          <a href="onpage-seo.html" class="related-card"><span class="post-tag">On-Page SEO</span><h4>Complete On-Page SEO Checklist</h4><p>Optimise titles, headings and images to rank higher.</p></a>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-logo"><div class="footer-logo__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/></svg></div>Athys <span>SEO</span> Blog</div>
+    <p class="footer-copy">© 2026 Athys SEO Blog. All rights reserved.</p>
+  </footer>
+  <div class="sticky-bar"><div class="sticky-bar__inner">
+    <a href="../index.html" class="site-logo"><div class="site-logo__icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35"/></svg></div>Athys <span>SEO</span> Blog</a>
+    <nav><a href="../index.html">Home</a><a href="../blog.html">Blog</a><a href="../about.html">About</a><a href="../subscribe.html" class="btn-nav">Subscribe</a></nav>
+  </div></div>
+  <button class="float-btn" aria-label="Help" onclick="window.location.href='../subscribe.html'">?</button>
+  <script>
+    const toggle = document.getElementById('navToggle'), nav = document.getElementById('siteNav');
+    toggle.addEventListener('click', () => { const o = nav.classList.toggle('open'); toggle.classList.toggle('open', o); toggle.setAttribute('aria-expanded', o); });
+  </script>
+</body>
+</html>
