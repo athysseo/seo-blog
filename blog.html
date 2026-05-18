@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <script src="js/blog-data.js"></script>
 </head>
 <body>
 
@@ -39,7 +40,7 @@
     </nav>
 
     <!-- BANNER -->
-    <div class="banner">
+    <div class="banner" style="background-image: url('https://raw.githubusercontent.com/athysseo/seo-blog/main/images/hero/blog-banner.jpg'); background-size: cover; background-position: center;">
         <span class="banner-text">Blog</span>
     </div>
 
@@ -55,14 +56,7 @@
         </div>
 
         <div class="cat-tabs" id="categoryTabs">
-            <button class="cat-tab active" data-category="all">All Posts</button>
-            <button class="cat-tab" data-category="SEO Basics">SEO Basics</button>
-            <button class="cat-tab" data-category="Technical SEO">Technical SEO</button>
-            <button class="cat-tab" data-category="On-Page SEO">On-Page SEO</button>
-            <button class="cat-tab" data-category="Content Strategy">Content Strategy</button>
-            <button class="cat-tab" data-category="Link Building">Link Building</button>
-            <button class="cat-tab" data-category="Local SEO">Local SEO</button>
-            <button class="cat-tab" data-category="SEO Tools">SEO Tools</button>
+            <!-- Rendered by JavaScript -->
         </div>
 
         <div class="posts-grid" id="postsGrid">
@@ -108,31 +102,13 @@
     </footer>
 
     <script>
-        // ─── POST DATA ───
-        const blogPosts = [
-            {
-                id: 1,
-                title: "A Beginner's Guide to Search Engine Optimization in 2026",
-                category: "SEO Basics",
-                description: "Learn what SEO is, how search engines work in 2026, the 4 pillars of search optimization, and how AI tools like ChatGPT and Gemini are changing rankings.",
-                date: "2026-05-17",
-                readTime: "6 min",
-                author: "Athys SEO",
-                icon: "🔍",
-                url: "blogs/blog-1-what-is-seo.html"
-            }
-            // Add more posts here
-        ];
-
         const POSTS_PER_PAGE = 6;
         let currentPage = 1;
         let currentCategory = 'all';
         let currentSearch = '';
 
-        // ─── RENDER FUNCTIONS ───
-
         function getFilteredPosts() {
-            let filtered = [...blogPosts];
+            let filtered = [...window.blogPosts];
             if (currentCategory !== 'all') {
                 filtered = filtered.filter(p => p.category === currentCategory);
             }
@@ -147,6 +123,26 @@
             }
             filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
             return filtered;
+        }
+
+        function renderCategories() {
+            const container = document.getElementById('categoryTabs');
+            const categories = ['all', ...new Set(window.blogPosts.map(p => p.category))];
+            container.innerHTML = categories.map(cat => `
+                <button class="cat-tab ${cat === currentCategory ? 'active' : ''}" data-category="${cat}">
+                    ${cat === 'all' ? 'All Posts' : cat}
+                </button>
+            `).join('');
+
+            container.querySelectorAll('.cat-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    currentCategory = this.dataset.category;
+                    currentPage = 1;
+                    renderPosts();
+                });
+            });
         }
 
         function renderPosts() {
@@ -244,17 +240,6 @@
             });
         }
 
-        // ─── CATEGORY TABS ───
-        document.querySelectorAll('.cat-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                currentCategory = this.dataset.category;
-                currentPage = 1;
-                renderPosts();
-            });
-        });
-
         // ─── SEARCH ───
         const searchInput = document.getElementById('blogSearchInput');
         let searchTimeout;
@@ -267,21 +252,8 @@
             }, 300);
         });
 
-        // ─── HEADER SEARCH ───
-        document.querySelector('.nav-search input').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                const val = this.value.trim();
-                if (val) {
-                    document.getElementById('blogSearchInput').value = val;
-                    currentSearch = val;
-                    currentPage = 1;
-                    renderPosts();
-                    document.querySelector('.blog-body').scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        });
-
         // ─── INIT ───
+        renderCategories();
         renderPosts();
     </script>
 </body>
