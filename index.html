@@ -8,7 +8,54 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <script src="js/blog-data.js"></script>
+    <style>
+        /* ─── SEARCH DROPDOWN ─── */
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-top: none;
+            box-shadow: 0 8px 32px var(--shadow);
+            max-height: 320px;
+            overflow-y: auto;
+            z-index: 300;
+            display: none;
+            border-radius: 0 0 4px 4px;
+        }
+        .search-dropdown-item {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--gray-100);
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 14px;
+            color: var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .search-dropdown-item:hover {
+            background: var(--gray-50);
+        }
+        .search-dropdown-item .dropdown-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--secondary);
+            letter-spacing: 0.06em;
+        }
+        .search-dropdown-empty {
+            padding: 16px;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 14px;
+        }
+        .nav-search {
+            position: relative;
+        }
+    </style>
 </head>
 <body>
 
@@ -35,11 +82,12 @@
         </ul>
         <div class="nav-search">
             <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input type="text" placeholder="Search..."/>
+            <input type="text" id="indexSearchInput" placeholder="Search posts..." autocomplete="off" />
+            <div class="search-dropdown" id="indexSearchDropdown"></div>
         </div>
     </nav>
 
-    <!-- ─── HERO ─── -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-bg" style="background-image: url('images/hero/hero-bg.jpg');"></div>
         <div class="hero-overlay"></div>
@@ -63,7 +111,7 @@
         </div>
     </section>
 
-    <!-- ─── FEATURED ARTICLES ─── -->
+    <!-- FEATURED ARTICLES -->
     <section id="featured">
         <div class="section-head">
             <div>
@@ -77,7 +125,7 @@
         </div>
     </section>
 
-    <!-- ─── LATEST POSTS ─── -->
+    <!-- LATEST POSTS -->
     <section id="latest">
         <div class="section-head">
             <div>
@@ -91,7 +139,7 @@
         </div>
     </section>
 
-    <!-- ─── CATEGORIES ─── -->
+    <!-- CATEGORIES -->
     <section id="categories">
         <div class="section-head">
             <div>
@@ -104,7 +152,7 @@
         </div>
     </section>
 
-    <!-- ─── NEWSLETTER ─── -->
+    <!-- NEWSLETTER -->
     <section id="newsletter">
         <div class="nl-inner">
             <div class="nl-icon">✉️</div>
@@ -119,7 +167,7 @@
         </div>
     </section>
 
-    <!-- ─── FOOTER ─── -->
+    <!-- FOOTER -->
     <footer>
         <div class="footer-grid">
             <div>
@@ -143,7 +191,6 @@
                     <li><a href="#">Link Building</a></li>
                     <li><a href="#">Local SEO</a></li>
                     <li><a href="#">SEO Tools</a></li>
-                    <li><a href="#">SEO Basics</a></li>
                 </ul>
             </div>
         </div>
@@ -153,12 +200,25 @@
     </footer>
 
     <script>
+        // ─── POST DATA ───
+        const blogPosts = [{
+            id: 1,
+            title: "A Beginner's Guide to Search Engine Optimization in 2026",
+            category: "SEO Basics",
+            description: "Learn what SEO is, how search engines work in 2026, the 4 pillars of search optimization, and how AI tools like ChatGPT and Gemini are changing rankings.",
+            date: "2026-05-17",
+            readTime: "6 min",
+            author: "Athys SEO",
+            icon: "🔍",
+            url: "blogs/blog-1-what-is-seo.html",
+            featured: true
+        }];
+
         // ─── RENDER FUNCTIONS ───
-        // Use window.blogPosts from blog-data.js
 
         function renderFeatured() {
             const grid = document.getElementById('featuredGrid');
-            const featured = window.blogPosts.filter(p => p.featured === true).slice(0, 3);
+            const featured = blogPosts.filter(p => p.featured === true).slice(0, 3);
 
             if (featured.length === 0) {
                 grid.innerHTML = `<div class="feat-empty">No featured posts yet. Add posts with "featured: true" to show them here.</div>`;
@@ -167,8 +227,8 @@
 
             grid.innerHTML = featured.map(p => `
                 <div class="feat-card" onclick="window.location.href='${p.url}'">
-                    <div class="feat-img" style="background-image: url('${p.featuredImage || ''}'); background-size: cover; background-position: center;">
-                        ${!p.featuredImage ? `<div class="feat-img-inner">${p.icon || '📄'}</div>` : ''}
+                    <div class="feat-img" style="background:#1a1a1a;">
+                        <div class="feat-img-inner">${p.icon || '📄'}</div>
                         <div class="feat-img-label">${p.category}</div>
                     </div>
                     <div class="feat-body">
@@ -183,7 +243,7 @@
 
         function renderLatest() {
             const grid = document.getElementById('latestGrid');
-            const sorted = [...window.blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+            const sorted = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
             const latest = sorted.slice(0, 6);
 
             if (latest.length === 0) {
@@ -193,8 +253,8 @@
 
             grid.innerHTML = latest.map(p => `
                 <div class="post-card" onclick="window.location.href='${p.url}'">
-                    <div class="post-img" style="background-image: url('${p.featuredImage || ''}'); background-size: cover; background-position: center;">
-                        ${!p.featuredImage ? `<div class="post-img-inner">${p.icon || '📄'}</div>` : ''}
+                    <div class="post-img" style="background:#1a1a1a;">
+                        <div class="post-img-inner">${p.icon || '📄'}</div>
                     </div>
                     <div class="post-body">
                         <div class="post-tag">${p.category}</div>
@@ -219,11 +279,11 @@
             const grid = document.getElementById('categoryGrid');
             const categories = [
                 "Technical SEO", "On-Page SEO", "Content Strategy",
-                "Link Building", "Local SEO", "SEO Tools", "SEO Basics"
+                "Link Building", "Local SEO", "SEO Tools"
             ];
             const counts = {};
             categories.forEach(c => counts[c] = 0);
-            window.blogPosts.forEach(p => { if (counts.hasOwnProperty(p.category)) counts[p.category]++; });
+            blogPosts.forEach(p => { if (counts.hasOwnProperty(p.category)) counts[p.category]++; });
 
             grid.innerHTML = categories.map(cat => `
                 <div class="cat-card">
@@ -242,11 +302,45 @@
                 'Content Strategy': '✍️',
                 'Link Building': '🔗',
                 'Local SEO': '📍',
-                'SEO Tools': '🛠️',
-                'SEO Basics': '📘'
+                'SEO Tools': '🛠️'
             };
             return icons[cat] || '📂';
         }
+
+        // ─── SEARCH DROPDOWN ───
+        const searchInput = document.getElementById('indexSearchInput');
+        const searchDropdown = document.getElementById('indexSearchDropdown');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.trim().toLowerCase();
+            if (query.length === 0) {
+                searchDropdown.style.display = 'none';
+                return;
+            }
+            const matches = blogPosts.filter(p =>
+                p.title.toLowerCase().includes(query) ||
+                p.category.toLowerCase().includes(query) ||
+                p.description.toLowerCase().includes(query)
+            );
+            if (matches.length === 0) {
+                searchDropdown.innerHTML = `<div class="search-dropdown-empty">No Posts Related</div>`;
+                searchDropdown.style.display = 'block';
+                return;
+            }
+            searchDropdown.innerHTML = matches.map(p => `
+                <div class="search-dropdown-item" onclick="window.location.href='${p.url}'">
+                    <span>${p.title}</span>
+                    <span class="dropdown-category">${p.category}</span>
+                </div>
+            `).join('');
+            searchDropdown.style.display = 'block';
+        });
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-search')) {
+                searchDropdown.style.display = 'none';
+            }
+        });
 
         // ─── INIT ───
         renderFeatured();
