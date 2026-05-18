@@ -40,9 +40,7 @@
     </nav>
 
     <!-- BANNER -->
-    <div class="banner" style="background-image: url('https://raw.githubusercontent.com/athysseo/seo-blog/main/images/hero/blog-banner.jpg'); background-size: cover; background-position: center;">
-        <span class="banner-text">Blog</span>
-    </div>
+    <div class="banner" style="background-image: url('https://raw.githubusercontent.com/athysseo/seo-blog/main/images/hero/blog-banner.jpg'); background-size: cover; background-position: center;"></div>
 
     <!-- BLOG BODY -->
     <div class="blog-body">
@@ -93,6 +91,7 @@
                     <li><a href="#">Link Building</a></li>
                     <li><a href="#">Local SEO</a></li>
                     <li><a href="#">SEO Tools</a></li>
+                    <li><a href="#">SEO Basics</a></li>
                 </ul>
             </div>
         </div>
@@ -177,8 +176,8 @@
             } else {
                 grid.innerHTML = pagePosts.map(p => `
                     <div class="post-card" onclick="window.location.href='${p.url}'">
-                        <div class="post-img" style="background:#1a1a1a;">
-                            <div class="post-img-inner">${p.icon || '📄'}</div>
+                        <div class="post-img" style="background-image: url('${p.featuredImage || ''}'); background-size: cover; background-position: center;">
+                            ${!p.featuredImage ? `<div class="post-img-inner">${p.icon || '📄'}</div>` : ''}
                         </div>
                         <div class="post-body">
                             <div class="post-tag">${p.category}</div>
