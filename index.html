@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
-        /* ─── SEARCH DROPDOWN ─── */
         .search-dropdown {
             position: absolute;
             top: 100%;
@@ -210,6 +209,7 @@
             readTime: "6 min",
             author: "Athys SEO",
             icon: "🔍",
+            featuredImage: "images/featured/seo-guide-featured.jpg",
             url: "blogs/blog-1-what-is-seo.html",
             featured: true
         }];
@@ -227,7 +227,7 @@
 
             grid.innerHTML = featured.map(p => `
                 <div class="feat-card" onclick="window.location.href='${p.url}'">
-                    <div class="feat-img" style="background:#1a1a1a;">
+                    <div class="feat-img" style="background-image: url('${p.featuredImage || p.heroImage || 'images/featured/seo-guide-featured.jpg'}'); background-size: cover; background-position: center; position: relative;">
                         <div class="feat-img-inner">${p.icon || '📄'}</div>
                         <div class="feat-img-label">${p.category}</div>
                     </div>
@@ -253,7 +253,7 @@
 
             grid.innerHTML = latest.map(p => `
                 <div class="post-card" onclick="window.location.href='${p.url}'">
-                    <div class="post-img" style="background:#1a1a1a;">
+                    <div class="post-img" style="background-image: url('${p.featuredImage || p.heroImage || 'images/featured/seo-guide-featured.jpg'}'); background-size: cover; background-position: center; position: relative;">
                         <div class="post-img-inner">${p.icon || '📄'}</div>
                     </div>
                     <div class="post-body">
