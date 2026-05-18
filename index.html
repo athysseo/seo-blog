@@ -8,6 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <!-- Load shared blog data -->
+    <script src="js/blog-data.js"></script>
 </head>
 <body>
 
@@ -151,28 +153,12 @@
     </footer>
 
     <script>
-        // ─── POST DATA ───
-        const blogPosts = [
-            {
-                id: 1,
-                title: "A Beginner's Guide to Search Engine Optimization in 2026",
-                category: "SEO Basics",
-                description: "Learn what SEO is, how search engines work in 2026, the 4 pillars of search optimization, and how AI tools like ChatGPT and Gemini are changing rankings.",
-                date: "2026-05-17",
-                readTime: "6 min",
-                author: "Athys SEO",
-                icon: "🔍",
-                url: "blogs/blog-1-what-is-seo.html",
-                featured: true
-            }
-            // Add more posts here as you create them.
-        ];
-
         // ─── RENDER FUNCTIONS ───
+        // Use window.blogPosts from blog-data.js
 
         function renderFeatured() {
             const grid = document.getElementById('featuredGrid');
-            const featured = blogPosts.filter(p => p.featured === true).slice(0, 3);
+            const featured = window.blogPosts.filter(p => p.featured === true).slice(0, 3);
 
             if (featured.length === 0) {
                 grid.innerHTML = `<div class="feat-empty">No featured posts yet. Add posts with "featured: true" to show them here.</div>`;
@@ -181,8 +167,8 @@
 
             grid.innerHTML = featured.map(p => `
                 <div class="feat-card" onclick="window.location.href='${p.url}'">
-                    <div class="feat-img" style="background:#1a1a1a;">
-                        <div class="feat-img-inner">${p.icon || '📄'}</div>
+                    <div class="feat-img" style="background-image: url('${p.featuredImage || ''}'); background-size: cover; background-position: center;">
+                        ${!p.featuredImage ? `<div class="feat-img-inner">${p.icon || '📄'}</div>` : ''}
                         <div class="feat-img-label">${p.category}</div>
                     </div>
                     <div class="feat-body">
@@ -197,7 +183,7 @@
 
         function renderLatest() {
             const grid = document.getElementById('latestGrid');
-            const sorted = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+            const sorted = [...window.blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
             const latest = sorted.slice(0, 6);
 
             if (latest.length === 0) {
@@ -237,7 +223,7 @@
             ];
             const counts = {};
             categories.forEach(c => counts[c] = 0);
-            blogPosts.forEach(p => { if (counts.hasOwnProperty(p.category)) counts[p.category]++; });
+            window.blogPosts.forEach(p => { if (counts.hasOwnProperty(p.category)) counts[p.category]++; });
 
             grid.innerHTML = categories.map(cat => `
                 <div class="cat-card">
