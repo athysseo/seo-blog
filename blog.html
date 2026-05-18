@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
-        /* ─── SEARCH DROPDOWN ─── */
         .search-dropdown {
             position: absolute;
             top: 100%;
@@ -52,10 +51,7 @@
             color: var(--secondary);
             font-size: 14px;
         }
-        .nav-search {
-            position: relative;
-        }
-        .filter-search {
+        .nav-search, .filter-search {
             position: relative;
         }
     </style>
@@ -91,9 +87,7 @@
     </nav>
 
     <!-- BANNER -->
-    <div class="banner">
-        <span class="banner-text">Blog</span>
-    </div>
+    <div class="banner" style="background-image: url('images/hero/blog-banner.jpg'); background-size: cover; background-position: center;"></div>
 
     <!-- BLOG BODY -->
     <div class="blog-body">
@@ -171,6 +165,7 @@
             readTime: "6 min",
             author: "Athys SEO",
             icon: "🔍",
+            featuredImage: "images/featured/seo-guide-featured.jpg",
             url: "blogs/blog-1-what-is-seo.html"
         }];
 
@@ -284,7 +279,7 @@
             } else {
                 grid.innerHTML = pagePosts.map(p => `
                     <div class="post-card" onclick="window.location.href='${p.url}'">
-                        <div class="post-img" style="background:#1a1a1a;">
+                        <div class="post-img" style="background-image: url('${p.featuredImage || 'images/featured/seo-guide-featured.jpg'}'); background-size: cover; background-position: center; position: relative;">
                             <div class="post-img-inner">${p.icon || '📄'}</div>
                         </div>
                         <div class="post-body">
