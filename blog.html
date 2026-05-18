@@ -141,11 +141,13 @@
             <div>
                 <div class="footer-col-title">Categories</div>
                 <ul class="footer-links">
-                    <li><a href="#">Technical SEO</a></li>
-                    <li><a href="#">Content Strategy</a></li>
-                    <li><a href="#">Link Building</a></li>
-                    <li><a href="#">Local SEO</a></li>
-                    <li><a href="#">SEO Tools</a></li>
+                    <li><a href="blog.html?category=Technical+SEO">Technical SEO</a></li>
+                    <li><a href="blog.html?category=On-Page+SEO">On-Page SEO</a></li>
+                    <li><a href="blog.html?category=Content+Strategy">Content Strategy</a></li>
+                    <li><a href="blog.html?category=Link+Building">Link Building</a></li>
+                    <li><a href="blog.html?category=Local+SEO">Local SEO</a></li>
+                    <li><a href="blog.html?category=SEO+Tools">SEO Tools</a></li>
+                    <li><a href="blog.html?category=SEO+Basics">SEO Basics</a></li>
                 </ul>
             </div>
         </div>
@@ -173,6 +175,32 @@
         let currentPage = 1;
         let currentCategory = 'all';
         let currentSearch = '';
+
+        // ─── READ URL PARAMETER ───
+        (function initCategoryFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const cat = params.get('category');
+            if (cat) {
+                // Find the matching tab and activate it
+                const tabs = document.querySelectorAll('.cat-tab');
+                let found = false;
+                tabs.forEach(tab => {
+                    if (tab.dataset.category === cat) {
+                        tab.classList.add('active');
+                        tab.classList.remove('active'); // Wait, the active class is removed from others.
+                    }
+                });
+                // Actually, let's just set currentCategory
+                currentCategory = cat;
+                // Update tab UI
+                tabs.forEach(tab => {
+                    tab.classList.remove('active');
+                    if (tab.dataset.category === cat) {
+                        tab.classList.add('active');
+                    }
+                });
+            }
+        })();
 
         // ─── SEARCH DROPDOWN (shared logic) ───
         function setupSearchDropdown(inputId, dropdownId) {
@@ -349,6 +377,14 @@
                 this.classList.add('active');
                 currentCategory = this.dataset.category;
                 currentPage = 1;
+                // Update URL without reloading
+                const url = new URL(window.location);
+                if (currentCategory === 'all') {
+                    url.searchParams.delete('category');
+                } else {
+                    url.searchParams.set('category', currentCategory);
+                }
+                window.history.pushState({}, '', url);
                 renderPosts();
             });
         });
@@ -371,6 +407,23 @@
 
         // ─── INIT ───
         renderPosts();
+
+        // ─── HANDLE POPSTATE (back/forward navigation) ───
+        window.addEventListener('popstate', function() {
+            const params = new URLSearchParams(window.location.search);
+            const cat = params.get('category');
+            currentCategory = cat || 'all';
+            // Update tab UI
+            const tabs = document.querySelectorAll('.cat-tab');
+            tabs.forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.category === currentCategory) {
+                    tab.classList.add('active');
+                }
+            });
+            currentPage = 1;
+            renderPosts();
+        });
     </script>
 </body>
 </html>
