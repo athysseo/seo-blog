@@ -8,59 +8,53 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <script src="js/blog-data.js"></script>
     <style>
-        /* Search Results Dropdown */
-        .search-results-dropdown {
+        /* ─── SEARCH DROPDOWN ─── */
+        .search-dropdown {
             position: absolute;
             top: 100%;
             left: 0;
-            width: 100%;
+            right: 0;
             background: var(--white);
             border: 1px solid var(--border);
+            border-top: none;
             box-shadow: 0 8px 32px var(--shadow);
-            max-height: 400px;
+            max-height: 320px;
             overflow-y: auto;
-            z-index: 100;
+            z-index: 300;
             display: none;
-            margin-top: 4px;
+            border-radius: 0 0 4px 4px;
         }
-        .search-results-dropdown.active {
-            display: block;
-        }
-        .search-result-item {
-            padding: 12px 16px;
+        .search-dropdown-item {
+            padding: 10px 16px;
             border-bottom: 1px solid var(--gray-100);
             cursor: pointer;
             transition: background 0.2s;
-            text-decoration: none;
-            color: var(--primary);
-            display: block;
-        }
-        .search-result-item:hover {
-            background: var(--gray-100);
-        }
-        .search-result-item:last-child {
-            border-bottom: none;
-        }
-        .search-result-item h4 {
             font-size: 14px;
-            font-weight: 500;
             color: var(--primary);
-            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .search-result-item p {
-            font-size: 12px;
+        .search-dropdown-item:hover {
+            background: var(--gray-50);
+        }
+        .search-dropdown-item .dropdown-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
             color: var(--secondary);
-            margin: 0;
+            letter-spacing: 0.06em;
         }
-        .search-result-empty {
-            padding: 24px 20px;
+        .search-dropdown-empty {
+            padding: 16px;
             text-align: center;
             color: var(--secondary);
             font-size: 14px;
         }
-        /* Ensure search container is relative for absolute dropdown */
+        .nav-search {
+            position: relative;
+        }
         .filter-search {
             position: relative;
         }
@@ -91,12 +85,15 @@
         </ul>
         <div class="nav-search">
             <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-            <input type="text" placeholder="Search..."/>
+            <input type="text" id="blogNavSearchInput" placeholder="Search posts..." autocomplete="off" />
+            <div class="search-dropdown" id="blogNavDropdown"></div>
         </div>
     </nav>
 
     <!-- BANNER -->
-    <div class="banner" style="background-image: url('https://raw.githubusercontent.com/athysseo/seo-blog/main/images/hero/blog-banner.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="banner">
+        <span class="banner-text">Blog</span>
+    </div>
 
     <!-- BLOG BODY -->
     <div class="blog-body">
@@ -104,14 +101,21 @@
         <div class="filter-row">
             <div class="filter-search">
                 <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                <input type="text" id="blogSearchInput" placeholder="Search articles..." />
-                <div class="search-results-dropdown" id="searchResults"></div>
+                <input type="text" id="blogFilterInput" placeholder="Filter posts..." autocomplete="off" />
+                <div class="search-dropdown" id="blogFilterDropdown"></div>
             </div>
             <div class="filter-label" id="postCount">0 posts</div>
         </div>
 
         <div class="cat-tabs" id="categoryTabs">
-            <!-- Rendered by JavaScript -->
+            <button class="cat-tab active" data-category="all">All Posts</button>
+            <button class="cat-tab" data-category="SEO Basics">SEO Basics</button>
+            <button class="cat-tab" data-category="Technical SEO">Technical SEO</button>
+            <button class="cat-tab" data-category="On-Page SEO">On-Page SEO</button>
+            <button class="cat-tab" data-category="Content Strategy">Content Strategy</button>
+            <button class="cat-tab" data-category="Link Building">Link Building</button>
+            <button class="cat-tab" data-category="Local SEO">Local SEO</button>
+            <button class="cat-tab" data-category="SEO Tools">SEO Tools</button>
         </div>
 
         <div class="posts-grid" id="postsGrid">
@@ -148,7 +152,6 @@
                     <li><a href="#">Link Building</a></li>
                     <li><a href="#">Local SEO</a></li>
                     <li><a href="#">SEO Tools</a></li>
-                    <li><a href="#">SEO Basics</a></li>
                 </ul>
             </div>
         </div>
@@ -158,13 +161,81 @@
     </footer>
 
     <script>
+        // ─── POST DATA ───
+        const blogPosts = [{
+            id: 1,
+            title: "A Beginner's Guide to Search Engine Optimization in 2026",
+            category: "SEO Basics",
+            description: "Learn what SEO is, how search engines work in 2026, the 4 pillars of search optimization, and how AI tools like ChatGPT and Gemini are changing rankings.",
+            date: "2026-05-17",
+            readTime: "6 min",
+            author: "Athys SEO",
+            icon: "🔍",
+            url: "blogs/blog-1-what-is-seo.html"
+        }];
+
         const POSTS_PER_PAGE = 6;
         let currentPage = 1;
         let currentCategory = 'all';
         let currentSearch = '';
 
+        // ─── SEARCH DROPDOWN (shared logic) ───
+        function setupSearchDropdown(inputId, dropdownId) {
+            const input = document.getElementById(inputId);
+            const dropdown = document.getElementById(dropdownId);
+
+            input.addEventListener('input', function() {
+                const query = this.value.trim().toLowerCase();
+                if (query.length === 0) {
+                    dropdown.style.display = 'none';
+                    return;
+                }
+                const matches = blogPosts.filter(p =>
+                    p.title.toLowerCase().includes(query) ||
+                    p.category.toLowerCase().includes(query) ||
+                    p.description.toLowerCase().includes(query)
+                );
+                if (matches.length === 0) {
+                    dropdown.innerHTML = `<div class="search-dropdown-empty">No Posts Related</div>`;
+                    dropdown.style.display = 'block';
+                    return;
+                }
+                dropdown.innerHTML = matches.map(p => `
+                    <div class="search-dropdown-item" onclick="window.location.href='${p.url}'">
+                        <span>${p.title}</span>
+                        <span class="dropdown-category">${p.category}</span>
+                    </div>
+                `).join('');
+                dropdown.style.display = 'block';
+            });
+
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const query = this.value.trim().toLowerCase();
+                    if (query) {
+                        const match = blogPosts.find(p =>
+                            p.title.toLowerCase().includes(query) ||
+                            p.category.toLowerCase().includes(query) ||
+                            p.description.toLowerCase().includes(query)
+                        );
+                        if (match) {
+                            window.location.href = match.url;
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-search') && !e.target.closest('.filter-search')) {
+                document.querySelectorAll('.search-dropdown').forEach(el => el.style.display = 'none');
+            }
+        });
+
+        // ─── RENDER FUNCTIONS ───
+
         function getFilteredPosts() {
-            let filtered = [...window.blogPosts];
+            let filtered = [...blogPosts];
             if (currentCategory !== 'all') {
                 filtered = filtered.filter(p => p.category === currentCategory);
             }
@@ -179,26 +250,6 @@
             }
             filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
             return filtered;
-        }
-
-        function renderCategories() {
-            const container = document.getElementById('categoryTabs');
-            const categories = ['all', ...new Set(window.blogPosts.map(p => p.category))];
-            container.innerHTML = categories.map(cat => `
-                <button class="cat-tab ${cat === currentCategory ? 'active' : ''}" data-category="${cat}">
-                    ${cat === 'all' ? 'All Posts' : cat}
-                </button>
-            `).join('');
-
-            container.querySelectorAll('.cat-tab').forEach(tab => {
-                tab.addEventListener('click', function() {
-                    document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    currentCategory = this.dataset.category;
-                    currentPage = 1;
-                    renderPosts();
-                });
-            });
         }
 
         function renderPosts() {
@@ -233,8 +284,8 @@
             } else {
                 grid.innerHTML = pagePosts.map(p => `
                     <div class="post-card" onclick="window.location.href='${p.url}'">
-                        <div class="post-img" style="background-image: url('${p.featuredImage || ''}'); background-size: cover; background-position: center; background-color: #1a1a1a;">
-                            ${!p.featuredImage ? `<div class="post-img-inner">${p.icon || '📄'}</div>` : ''}
+                        <div class="post-img" style="background:#1a1a1a;">
+                            <div class="post-img-inner">${p.icon || '📄'}</div>
                         </div>
                         <div class="post-body">
                             <div class="post-tag">${p.category}</div>
@@ -296,61 +347,34 @@
             });
         }
 
-        // ─── SEARCH DROPDOWN ───
-        const searchInput = document.getElementById('blogSearchInput');
-        const searchResultsContainer = document.getElementById('searchResults');
-
-        searchInput.addEventListener('input', function() {
-            const query = this.value.trim();
-            if (query === '') {
-                searchResultsContainer.classList.remove('active');
-                // Also clear the main grid search
-                currentSearch = '';
+        // ─── CATEGORY TABS ───
+        document.querySelectorAll('.cat-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.dataset.category;
                 currentPage = 1;
                 renderPosts();
-                return;
-            }
-
-            // Filter all posts based on query
-            const q = query.toLowerCase();
-            const matches = window.blogPosts.filter(p =>
-                p.title.toLowerCase().includes(q) ||
-                p.category.toLowerCase().includes(q) ||
-                p.description.toLowerCase().includes(q) ||
-                p.author.toLowerCase().includes(q)
-            );
-
-            // Render dropdown results
-            if (matches.length === 0) {
-                searchResultsContainer.innerHTML = `
-                    <div class="search-result-empty">No posts related to this.</div>
-                `;
-                searchResultsContainer.classList.add('active');
-            } else {
-                searchResultsContainer.innerHTML = matches.map(p => `
-                    <a href="${p.url}" class="search-result-item">
-                        <h4>${p.title}</h4>
-                        <p>${p.category} · ${p.date}</p>
-                    </a>
-                `).join('');
-                searchResultsContainer.classList.add('active');
-            }
-
-            // Also update the main grid with the filtered results
-            currentSearch = query;
-            currentPage = 1;
-            renderPosts();
+            });
         });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!e.target.closest('.filter-search')) {
-                searchResultsContainer.classList.remove('active');
-            }
+        // ─── FILTER SEARCH ───
+        const filterInput = document.getElementById('blogFilterInput');
+        let searchTimeout;
+        filterInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                currentSearch = this.value;
+                currentPage = 1;
+                renderPosts();
+            }, 300);
         });
+
+        // ─── INIT SEARCH DROPDOWNS ───
+        setupSearchDropdown('blogNavSearchInput', 'blogNavDropdown');
+        setupSearchDropdown('blogFilterInput', 'blogFilterDropdown');
 
         // ─── INIT ───
-        renderCategories();
         renderPosts();
     </script>
 </body>
