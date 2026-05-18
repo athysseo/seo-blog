@@ -1,4 +1,3 @@
-// js/blog-data.js
 window.blogPosts = [
   {
     id: 1,
@@ -13,6 +12,4 @@ window.blogPosts = [
     featured: true,
     featuredImage: "https://raw.githubusercontent.com/athysseo/seo-blog/main/images/feautured/seo-guide-featured.jpg"
   }
-  // When you add a new post, just paste a new object here.
-  // It will automatically appear in index.html and blog.html.
 ];
