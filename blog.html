@@ -1,1 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — Athys SEO Blog</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ─── SEARCH DROPDOWN ─── */
+        .search-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-top: none;
+            box-shadow: 0 8px 32px var(--shadow);
+            max-height: 320px;
+            overflow-y: auto;
+            z-index: 300;
+            display: none;
+            border-radius: 0 0 4px 4px;
+        }
+        .search-dropdown-item {
+            padding: 10px 16px;
+            border-bottom: 1px solid var(--gray-100);
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 14px;
+            color: var(--primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .search-dropdown-item:hover {
+            background: var(--gray-50);
+        }
+        .search-dropdown-item .dropdown-category {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--secondary);
+            letter-spacing: 0.06em;
+        }
+        .search-dropdown-empty {
+            padding: 16px;
+            text-align: center;
+            color: var(--secondary);
+            font-size: 14px;
+        }
+        .nav-search {
+            position: relative;
+        }
+        .filter-search {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
 
+    <!-- TOP BAR -->
+    <div class="topbar">
+        <div class="topbar-right">
+            <a href="index.html">Home</a>
+            <a href="blog.html">Blog</a>
+        </div>
+    </div>
+
+    <!-- SITE HEADER -->
+    <div class="site-header">
+        <div class="site-header-title">Athys SEO Blog</div>
+        <div class="site-header-sub">SEO Strategies, Tips &amp; Insights for Digital Success</div>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#" class="active">Blog</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+        <div class="nav-search">
+            <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="text" id="blogNavSearchInput" placeholder="Search posts..." autocomplete="off" />
+            <div class="search-dropdown" id="blogNavDropdown"></div>
+        </div>
+    </nav>
+
+    <!-- BANNER -->
+    <div class="banner">
+        <span class="banner-text">Blog</span>
+    </div>
+
+    <!-- BLOG BODY -->
+    <div class="blog-body">
+
+        <div class="filter-row">
+            <div class="filter-search">
+                <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                <input type="text" id="blogFilterInput" placeholder="Filter posts..." autocomplete="off" />
+                <div class="search-dropdown" id="blogFilterDropdown"></div>
+            </div>
+            <div class="filter-label" id="postCount">0 posts</div>
+        </div>
+
+        <div class="cat-tabs" id="categoryTabs">
+            <button class="cat-tab active" data-category="all">All Posts</button>
+            <button class="cat-tab" data-category="SEO Basics">SEO Basics</button>
+            <button class="cat-tab" data-category="Technical SEO">Technical SEO</button>
+            <button class="cat-tab" data-category="On-Page SEO">On-Page SEO</button>
+            <button class="cat-tab" data-category="Content Strategy">Content Strategy</button>
+            <button class="cat-tab" data-category="Link Building">Link Building</button>
+            <button class="cat-tab" data-category="Local SEO">Local SEO</button>
+            <button class="cat-tab" data-category="SEO Tools">SEO Tools</button>
+        </div>
+
+        <div class="posts-grid" id="postsGrid">
+            <!-- Rendered by JavaScript -->
+        </div>
+
+        <div class="pagination" id="pagination">
+            <!-- Rendered by JavaScript -->
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-brand-name">Athys SEO Blog</div>
+                <div class="footer-brand-sub">Strategies · Tips · Insights</div>
+                <p class="footer-brand-desc">Your trusted source for SEO strategies, digital marketing insights, and growth tactics.</p>
+            </div>
+            <div>
+                <div class="footer-col-title">Quick Links</div>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Categories</div>
+                <ul class="footer-links">
+                    <li><a href="#">Technical SEO</a></li>
+                    <li><a href="#">Content Strategy</a></li>
+                    <li><a href="#">Link Building</a></li>
+                    <li><a href="#">Local SEO</a></li>
+                    <li><a href="#">SEO Tools</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="footer-copy">© 2026 Athys SEO Blog. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script>
+        // ─── POST DATA ───
+        const blogPosts = [{
+            id: 1,
+            title: "A Beginner's Guide to Search Engine Optimization in 2026",
+            category: "SEO Basics",
+            description: "Learn what SEO is, how search engines work in 2026, the 4 pillars of search optimization, and how AI tools like ChatGPT and Gemini are changing rankings.",
+            date: "2026-05-17",
+            readTime: "6 min",
+            author: "Athys SEO",
+            icon: "🔍",
+            url: "blogs/blog-1-what-is-seo.html"
+        }];
+
+        const POSTS_PER_PAGE = 6;
+        let currentPage = 1;
+        let currentCategory = 'all';
+        let currentSearch = '';
+
+        // ─── SEARCH DROPDOWN (shared logic) ───
+        function setupSearchDropdown(inputId, dropdownId) {
+            const input = document.getElementById(inputId);
+            const dropdown = document.getElementById(dropdownId);
+
+            input.addEventListener('input', function() {
+                const query = this.value.trim().toLowerCase();
+                if (query.length === 0) {
+                    dropdown.style.display = 'none';
+                    return;
+                }
+                const matches = blogPosts.filter(p =>
+                    p.title.toLowerCase().includes(query) ||
+                    p.category.toLowerCase().includes(query) ||
+                    p.description.toLowerCase().includes(query)
+                );
+                if (matches.length === 0) {
+                    dropdown.innerHTML = `<div class="search-dropdown-empty">No Posts Related</div>`;
+                    dropdown.style.display = 'block';
+                    return;
+                }
+                dropdown.innerHTML = matches.map(p => `
+                    <div class="search-dropdown-item" onclick="window.location.href='${p.url}'">
+                        <span>${p.title}</span>
+                        <span class="dropdown-category">${p.category}</span>
+                    </div>
+                `).join('');
+                dropdown.style.display = 'block';
+            });
+
+            input.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') {
+                    const query = this.value.trim().toLowerCase();
+                    if (query) {
+                        const match = blogPosts.find(p =>
+                            p.title.toLowerCase().includes(query) ||
+                            p.category.toLowerCase().includes(query) ||
+                            p.description.toLowerCase().includes(query)
+                        );
+                        if (match) {
+                            window.location.href = match.url;
+                        }
+                    }
+                }
+            });
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-search') && !e.target.closest('.filter-search')) {
+                document.querySelectorAll('.search-dropdown').forEach(el => el.style.display = 'none');
+            }
+        });
+
+        // ─── RENDER FUNCTIONS ───
+
+        function getFilteredPosts() {
+            let filtered = [...blogPosts];
+            if (currentCategory !== 'all') {
+                filtered = filtered.filter(p => p.category === currentCategory);
+            }
+            if (currentSearch.trim()) {
+                const q = currentSearch.trim().toLowerCase();
+                filtered = filtered.filter(p =>
+                    p.title.toLowerCase().includes(q) ||
+                    p.category.toLowerCase().includes(q) ||
+                    p.description.toLowerCase().includes(q) ||
+                    p.author.toLowerCase().includes(q)
+                );
+            }
+            filtered.sort((a, b) => new Date(b.date) - new Date(a.date));
+            return filtered;
+        }
+
+        function renderPosts() {
+            const grid = document.getElementById('postsGrid');
+            const filtered = getFilteredPosts();
+
+            document.getElementById('postCount').textContent = `${filtered.length} post${filtered.length !== 1 ? 's' : ''}`;
+
+            const totalPages = Math.max(1, Math.ceil(filtered.length / POSTS_PER_PAGE));
+            if (currentPage > totalPages) currentPage = totalPages;
+            const start = (currentPage - 1) * POSTS_PER_PAGE;
+            const end = start + POSTS_PER_PAGE;
+            const pagePosts = filtered.slice(start, end);
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">📂</div>
+                        <h3>No posts yet</h3>
+                        <p>There are no posts to show right now. Check back soon for new content.</p>
+                        <a href="index.html" class="empty-cta">Back to Home</a>
+                    </div>
+                `;
+            } else if (pagePosts.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-icon">🔍</div>
+                        <h3>No posts on this page</h3>
+                        <p>Try going back to page 1 or adjusting your filters.</p>
+                    </div>
+                `;
+            } else {
+                grid.innerHTML = pagePosts.map(p => `
+                    <div class="post-card" onclick="window.location.href='${p.url}'">
+                        <div class="post-img" style="background:#1a1a1a;">
+                            <div class="post-img-inner">${p.icon || '📄'}</div>
+                        </div>
+                        <div class="post-body">
+                            <div class="post-tag">${p.category}</div>
+                            <h3 class="post-title">${p.title}</h3>
+                            <p class="post-desc">${p.description}</p>
+                            <div class="post-meta">
+                                <span>
+                                    <svg viewBox="0 0 24 24" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                                    ${p.date}
+                                </span>
+                                <span>
+                                    <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+                                    ${p.readTime}
+                                </span>
+                            </div>
+                            <div class="post-author">By ${p.author}</div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            renderPagination(totalPages);
+
+            const cards = grid.querySelectorAll('.post-card');
+            cards.forEach((el, i) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(16px)';
+                el.style.transition = `opacity 0.5s ease ${i * 0.06}s, transform 0.5s ease ${i * 0.06}s`;
+                requestAnimationFrame(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                });
+            });
+        }
+
+        function renderPagination(totalPages) {
+            const container = document.getElementById('pagination');
+            if (totalPages <= 1) {
+                container.innerHTML = '';
+                return;
+            }
+            let html = '';
+            html += `<button class="pg-btn pg-prev" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''}>← Previous</button>`;
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<button class="pg-btn ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+            }
+            html += `<button class="pg-btn pg-next" data-page="${currentPage + 1}" ${currentPage >= totalPages ? 'disabled' : ''}>Next →</button>`;
+            container.innerHTML = html;
+
+            container.querySelectorAll('.pg-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const page = parseInt(this.dataset.page);
+                    if (page && page >= 1 && page <= totalPages) {
+                        currentPage = page;
+                        renderPosts();
+                        document.querySelector('.blog-body').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        }
+
+        // ─── CATEGORY TABS ───
+        document.querySelectorAll('.cat-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.dataset.category;
+                currentPage = 1;
+                renderPosts();
+            });
+        });
+
+        // ─── FILTER SEARCH ───
+        const filterInput = document.getElementById('blogFilterInput');
+        let searchTimeout;
+        filterInput.addEventListener('input', function() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                currentSearch = this.value;
+                currentPage = 1;
+                renderPosts();
+            }, 300);
+        });
+
+        // ─── INIT SEARCH DROPDOWNS ───
+        setupSearchDropdown('blogNavSearchInput', 'blogNavDropdown');
+        setupSearchDropdown('blogFilterInput', 'blogFilterDropdown');
+
+        // ─── INIT ───
+        renderPosts();
+    </script>
+</body>
+</html>
