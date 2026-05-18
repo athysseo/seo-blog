@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <!-- Load shared blog data -->
     <script src="js/blog-data.js"></script>
 </head>
 <body>
@@ -144,6 +143,7 @@
                     <li><a href="#">Link Building</a></li>
                     <li><a href="#">Local SEO</a></li>
                     <li><a href="#">SEO Tools</a></li>
+                    <li><a href="#">SEO Basics</a></li>
                 </ul>
             </div>
         </div>
@@ -193,8 +193,8 @@
 
             grid.innerHTML = latest.map(p => `
                 <div class="post-card" onclick="window.location.href='${p.url}'">
-                    <div class="post-img" style="background:#1a1a1a;">
-                        <div class="post-img-inner">${p.icon || '📄'}</div>
+                    <div class="post-img" style="background-image: url('${p.featuredImage || ''}'); background-size: cover; background-position: center;">
+                        ${!p.featuredImage ? `<div class="post-img-inner">${p.icon || '📄'}</div>` : ''}
                     </div>
                     <div class="post-body">
                         <div class="post-tag">${p.category}</div>
@@ -219,7 +219,7 @@
             const grid = document.getElementById('categoryGrid');
             const categories = [
                 "Technical SEO", "On-Page SEO", "Content Strategy",
-                "Link Building", "Local SEO", "SEO Tools"
+                "Link Building", "Local SEO", "SEO Tools", "SEO Basics"
             ];
             const counts = {};
             categories.forEach(c => counts[c] = 0);
@@ -242,7 +242,8 @@
                 'Content Strategy': '✍️',
                 'Link Building': '🔗',
                 'Local SEO': '📍',
-                'SEO Tools': '🛠️'
+                'SEO Tools': '🛠️',
+                'SEO Basics': '📘'
             };
             return icons[cat] || '📂';
         }
