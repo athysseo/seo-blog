@@ -406,7 +406,7 @@ section+section {
     content: '→';
 }
 
-/* ─── FEATURED ─── */
+/* ─── FEATURED CARDS ─── */
 #featured {
     background: var(--white);
 }
@@ -418,23 +418,26 @@ section+section {
 }
 
 .feat-card {
-    background: var(--tertiary);
-    border: 1px solid var(--border);
+    background: #000000 !important;
+    border: 1px solid #333333 !important;
     overflow: hidden;
     cursor: pointer;
     transition: box-shadow 0.25s, transform 0.25s;
 }
 
 .feat-card:hover {
-    box-shadow: 0 12px 40px var(--shadow);
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
     transform: translateY(-4px);
 }
 
 .feat-img {
     height: 200px;
-    background: var(--primary);
     position: relative;
     overflow: hidden;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: #000000;
 }
 
 .feat-img-inner {
@@ -465,6 +468,7 @@ section+section {
 
 .feat-body {
     padding: 26px;
+    background: #000000 !important;
 }
 
 .feat-tag {
@@ -472,7 +476,7 @@ section+section {
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--secondary);
+    color: #ffffff !important;
     margin-bottom: 10px;
 }
 
@@ -480,13 +484,13 @@ section+section {
     font-size: 18px;
     font-weight: 600;
     line-height: 1.3;
-    color: var(--primary);
+    color: #ffffff !important;
     margin-bottom: 10px;
 }
 
 .feat-desc {
     font-size: 14px;
-    color: var(--secondary);
+    color: #ffffff !important;
     line-height: 1.7;
     margin-bottom: 22px;
 }
@@ -500,16 +504,16 @@ section+section {
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--primary);
+    color: #ffffff !important;
     text-decoration: none;
-    border: 1.5px solid var(--primary);
+    border: 1.5px solid #ffffff !important;
     padding: 9px 18px;
     transition: background 0.2s, color 0.2s, gap 0.2s;
 }
 
 .btn-read:hover {
-    background: var(--primary);
-    color: var(--white);
+    background: #ffffff;
+    color: #000000 !important;
     gap: 12px;
 }
 
@@ -527,7 +531,7 @@ section+section {
     background: var(--tertiary);
 }
 
-/* ─── LATEST POSTS ─── */
+/* ─── LATEST POSTS CARDS ─── */
 #latest {
     background: var(--tertiary);
 }
@@ -539,23 +543,26 @@ section+section {
 }
 
 .post-card {
-    background: var(--white);
-    border: 1px solid var(--border);
+    background: #000000 !important;
+    border: 1px solid #333333 !important;
     overflow: hidden;
     cursor: pointer;
     transition: box-shadow 0.25s, transform 0.25s;
 }
 
 .post-card:hover {
-    box-shadow: 0 8px 32px var(--shadow);
+    box-shadow: 0 8px 32px rgba(255, 255, 255, 0.1);
     transform: translateY(-3px);
 }
 
 .post-img {
     height: 170px;
-    background: var(--primary);
     position: relative;
     overflow: hidden;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: #000000;
 }
 
 .post-img-inner {
@@ -575,6 +582,7 @@ section+section {
 
 .post-body {
     padding: 20px 22px;
+    background: #000000 !important;
 }
 
 .post-tag {
@@ -582,7 +590,7 @@ section+section {
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--secondary);
+    color: #ffffff !important;
     margin-bottom: 8px;
 }
 
@@ -590,13 +598,13 @@ section+section {
     font-size: 15px;
     font-weight: 500;
     line-height: 1.4;
-    color: var(--primary);
+    color: #ffffff !important;
     margin-bottom: 8px;
 }
 
 .post-desc {
     font-size: 13px;
-    color: var(--secondary);
+    color: #ffffff !important;
     line-height: 1.65;
     margin-bottom: 16px;
 }
@@ -606,7 +614,7 @@ section+section {
     align-items: center;
     gap: 14px;
     font-size: 11px;
-    color: var(--gray-400);
+    color: #aaaaaa !important;
 }
 
 .post-meta span {
