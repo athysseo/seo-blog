@@ -10,6 +10,6 @@ window.blogPosts = [
     icon: "🔍",
     url: "blogs/what-is-seo.html",
     featured: true,
-    featuredImage: "https://raw.githubusercontent.com/athysseo/seo-blog/main/images/feautured/seo-guide-featured.jpg"
+    featuredImage: "https://raw.githubusercontent.com/athysseo/seo-blog/main/images/featured/seo-guide-featured.jpg"
   }
 ];
