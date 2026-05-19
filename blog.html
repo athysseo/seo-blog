@@ -56,25 +56,14 @@
             position: relative;
         }
 
-        /* ─── FIXED IMAGE CARDS ─── */
-        .feat-img {
-            height: 200px;
-            background: var(--primary);
-            position: relative;
-            overflow: hidden;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+        /* ─── FORCE CARD IMAGE BACKGROUND TO PURE BLACK ─── */
+        .feat-img, .post-img {
+            background: #000000 !important;
         }
 
-        .post-img {
-            height: 170px;
-            background: var(--primary);
-            position: relative;
-            overflow: hidden;
-            background-size: contain;
-            background-position: center;
-            background-repeat: no-repeat;
+        /* ─── HIDE THE FALLBACK ICON INSIDE IMAGE CONTAINERS ─── */
+        .feat-img-inner, .post-img-inner {
+            display: none !important;
         }
     </style>
 </head>
@@ -303,9 +292,7 @@
             } else {
                 grid.innerHTML = pagePosts.map(p => `
                     <div class="post-card" onclick="window.location.href='${p.url}'">
-                        <div class="post-img" style="background-image: url('${p.featuredImage}');">
-                            <div class="post-img-inner">${p.icon || '📄'}</div>
-                        </div>
+                        <div class="post-img" style="background-image: url('${p.featuredImage}');"></div>
                         <div class="post-body">
                             <div class="post-tag">${p.category}</div>
                             <h3 class="post-title">${p.title}</h3>
