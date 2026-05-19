@@ -56,12 +56,17 @@
             position: relative;
         }
 
-        /* ─── FORCE CARD IMAGE BACKGROUND TO PURE BLACK ─── */
+        /* ─── CARD IMAGE FIX ─── */
         .feat-img, .post-img {
-            background: #000000 !important;
+            background: #000000;
+            position: relative;
+            overflow: hidden;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
-        /* ─── HIDE THE FALLBACK ICON INSIDE IMAGE CONTAINERS ─── */
+        /* ─── HIDE THE FALLBACK ICON ─── */
         .feat-img-inner, .post-img-inner {
             display: none !important;
         }
