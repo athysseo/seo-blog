@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
+        /* ─── SEARCH DROPDOWN ─── */
         .search-dropdown {
             position: absolute;
             top: 100%;
@@ -54,6 +55,27 @@
         .nav-search, .filter-search {
             position: relative;
         }
+
+        /* ─── FIXED IMAGE CARDS ─── */
+        .feat-img {
+            height: 200px;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .post-img {
+            height: 170px;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +90,7 @@
 
     <!-- SITE HEADER -->
     <div class="site-header">
-        <div class="site-header-title">Athys SEO Blog</div>
+        <div class="site-header-title">ATHYS SEO BLOG</div>
         <div class="site-header-sub">SEO Strategies, Tips &amp; Insights for Digital Success</div>
     </div>
 
@@ -176,32 +198,6 @@
         let currentCategory = 'all';
         let currentSearch = '';
 
-        // ─── READ URL PARAMETER ───
-        (function initCategoryFromURL() {
-            const params = new URLSearchParams(window.location.search);
-            const cat = params.get('category');
-            if (cat) {
-                // Find the matching tab and activate it
-                const tabs = document.querySelectorAll('.cat-tab');
-                let found = false;
-                tabs.forEach(tab => {
-                    if (tab.dataset.category === cat) {
-                        tab.classList.add('active');
-                        tab.classList.remove('active'); // Wait, the active class is removed from others.
-                    }
-                });
-                // Actually, let's just set currentCategory
-                currentCategory = cat;
-                // Update tab UI
-                tabs.forEach(tab => {
-                    tab.classList.remove('active');
-                    if (tab.dataset.category === cat) {
-                        tab.classList.add('active');
-                    }
-                });
-            }
-        })();
-
         // ─── SEARCH DROPDOWN (shared logic) ───
         function setupSearchDropdown(inputId, dropdownId) {
             const input = document.getElementById(inputId);
@@ -307,7 +303,7 @@
             } else {
                 grid.innerHTML = pagePosts.map(p => `
                     <div class="post-card" onclick="window.location.href='${p.url}'">
-                        <div class="post-img" style="background-image: url('${p.featuredImage}'); background-size: cover; background-position: center; position: relative;">
+                        <div class="post-img" style="background-image: url('${p.featuredImage}');">
                             <div class="post-img-inner">${p.icon || '📄'}</div>
                         </div>
                         <div class="post-body">
@@ -377,14 +373,6 @@
                 this.classList.add('active');
                 currentCategory = this.dataset.category;
                 currentPage = 1;
-                // Update URL without reloading
-                const url = new URL(window.location);
-                if (currentCategory === 'all') {
-                    url.searchParams.delete('category');
-                } else {
-                    url.searchParams.set('category', currentCategory);
-                }
-                window.history.pushState({}, '', url);
                 renderPosts();
             });
         });
@@ -407,23 +395,6 @@
 
         // ─── INIT ───
         renderPosts();
-
-        // ─── HANDLE POPSTATE (back/forward navigation) ───
-        window.addEventListener('popstate', function() {
-            const params = new URLSearchParams(window.location.search);
-            const cat = params.get('category');
-            currentCategory = cat || 'all';
-            // Update tab UI
-            const tabs = document.querySelectorAll('.cat-tab');
-            tabs.forEach(tab => {
-                tab.classList.remove('active');
-                if (tab.dataset.category === currentCategory) {
-                    tab.classList.add('active');
-                }
-            });
-            currentPage = 1;
-            renderPosts();
-        });
     </script>
 </body>
 </html>
