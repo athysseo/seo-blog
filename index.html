@@ -55,8 +55,26 @@
         .nav-search {
             position: relative;
         }
-        .cat-card {
-            cursor: pointer;
+
+        /* ─── FIXED IMAGE CARDS ─── */
+        .feat-img {
+            height: 200px;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .post-img {
+            height: 170px;
+            background: var(--primary);
+            position: relative;
+            overflow: hidden;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
         }
     </style>
 </head>
@@ -233,7 +251,7 @@
 
             grid.innerHTML = featured.map(p => `
                 <div class="feat-card" onclick="window.location.href='${p.url}'">
-                    <div class="feat-img" style="background-image: url('${p.featuredImage}'); background-size: cover; background-position: center; position: relative;">
+                    <div class="feat-img" style="background-image: url('${p.featuredImage}');">
                         <div class="feat-img-inner">${p.icon || '📄'}</div>
                         <div class="feat-img-label">${p.category}</div>
                     </div>
@@ -259,7 +277,7 @@
 
             grid.innerHTML = latest.map(p => `
                 <div class="post-card" onclick="window.location.href='${p.url}'">
-                    <div class="post-img" style="background-image: url('${p.featuredImage}'); background-size: cover; background-position: center; position: relative;">
+                    <div class="post-img" style="background-image: url('${p.featuredImage}');">
                         <div class="post-img-inner">${p.icon || '📄'}</div>
                     </div>
                     <div class="post-body">
@@ -307,7 +325,7 @@
             grid.innerHTML = categories.map(cat => `
                 <div class="cat-card" onclick="window.location.href='blog.html?category=${encodeURIComponent(cat)}'">
                     <div class="cat-icon">${getCategoryIcon(cat)}</div>
-                    <div class="cat-count">${counts[cat] || 0} Posts</div>
+                    <div class="cat-count">${counts[cat] || 0} POSTS</div>
                     <div class="cat-name">${cat}</div>
                     <div class="cat-arrow">→</div>
                 </div>
