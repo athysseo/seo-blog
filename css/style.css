@@ -432,7 +432,7 @@ section+section {
 
 .feat-img {
     height: 200px;
-    background: var(--primary);
+    background: #000000;
     position: relative;
     overflow: hidden;
     background-size: contain;
@@ -556,7 +556,7 @@ section+section {
 
 .post-img {
     height: 170px;
-    background: var(--primary);
+    background: #000000;
     position: relative;
     overflow: hidden;
     background-size: contain;
