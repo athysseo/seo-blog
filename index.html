@@ -60,6 +60,11 @@
         .feat-img, .post-img {
             background: #000000 !important;
         }
+
+        /* ─── HIDE THE FALLBACK ICON INSIDE IMAGE CONTAINERS ─── */
+        .feat-img-inner, .post-img-inner {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -235,10 +240,7 @@
 
             grid.innerHTML = featured.map(p => `
                 <div class="feat-card" onclick="window.location.href='${p.url}'">
-                    <div class="feat-img" style="background-image: url('${p.featuredImage}');">
-                        <div class="feat-img-inner">${p.icon || '📄'}</div>
-                        <div class="feat-img-label">${p.category}</div>
-                    </div>
+                    <div class="feat-img" style="background-image: url('${p.featuredImage}');"></div>
                     <div class="feat-body">
                         <div class="feat-tag">${p.category}</div>
                         <h3 class="feat-title">${p.title}</h3>
@@ -261,9 +263,7 @@
 
             grid.innerHTML = latest.map(p => `
                 <div class="post-card" onclick="window.location.href='${p.url}'">
-                    <div class="post-img" style="background-image: url('${p.featuredImage}');">
-                        <div class="post-img-inner">${p.icon || '📄'}</div>
-                    </div>
+                    <div class="post-img" style="background-image: url('${p.featuredImage}');"></div>
                     <div class="post-body">
                         <div class="post-tag">${p.category}</div>
                         <h4 class="post-title">${p.title}</h4>
